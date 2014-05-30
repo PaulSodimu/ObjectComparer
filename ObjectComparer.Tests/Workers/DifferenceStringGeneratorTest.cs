@@ -24,7 +24,7 @@ namespace ObjectComparer.Tests.Workers
             var result = _target.Generate("TestProperty", "a", "b");
             
             //Assert
-            Assert.IsTrue(result.Contains("TestProperty"));
+            Assert.IsTrue(result.Contains("Test Property"));
         }
 
         [TestMethod]
