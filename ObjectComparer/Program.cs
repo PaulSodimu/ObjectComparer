@@ -19,7 +19,11 @@ namespace ObjectComparer
         }
 
         public static void Main(string[] args)
-        {
+        { 
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            //Catch em all
+            currentDomain.UnhandledException += MyHandler; 
+
             InitialiseCastle();
 
             IAnimal aCow = new Cow(){Colour = "Blue", NumberOfUdders = 5};
@@ -119,6 +123,13 @@ namespace ObjectComparer
             }
 
             return null;
+        }
+
+        public static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            var e = (Exception)args.ExceptionObject;
+            Console.WriteLine("MyHandler caught : " + e.Message);
+            Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
         }
     }
 }
