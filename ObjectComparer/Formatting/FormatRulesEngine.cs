@@ -15,13 +15,14 @@ namespace ObjectComparer.Formatting
         public string ApplyRules(string propertyName)
         {
             var rules = _rulesFactory.Get();
+            var formatted = "";
 
             foreach (var rule in rules)
             {
-                rule.Apply(propertyName);
+                formatted = rule.Apply(propertyName);
             }
 
-            return propertyName;
+            return formatted;
         }
     }
 }

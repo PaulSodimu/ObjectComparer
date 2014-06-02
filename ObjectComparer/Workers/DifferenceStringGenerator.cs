@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Castle.Core;
+﻿using Castle.Core;
 using ObjectComparer.Formatting.Interfaces;
 using ObjectComparer.Logging;
 using ObjectComparer.Workers.Interfaces;
@@ -20,7 +19,7 @@ namespace ObjectComparer.Workers
         {
             string formattedName = _rulesEngine.ApplyRules(propertyName);
 
-            string difference = string.Format("{0} changed from '{1}' to '{2}'", Regex.Replace(formattedName, "(\\B[A-Z])", " $1"), oldValue, newValue);
+            string difference = string.Format("{0} changed from '{1}' to '{2}'", formattedName, oldValue, newValue);
 
             return difference;
         }
