@@ -57,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auditor.cs" />
+    <Compile Include="Formatting\FormatRulesEngine.cs" />
+    <Compile Include="Formatting\Interfaces\IRulesFactory.cs" />
+    <Compile Include="Formatting\RulesFactory.cs" />
+    <Compile Include="Formatting\Rules\CamelCaseSplitRule.cs" />
+    <Compile Include="Formatting\Rules\Interfaces\IFormatRule.cs" />
     <Compile Include="HelperObjects\Bike.cs" />
     <Compile Include="HelperObjects\Car.cs" />
     <Compile Include="HelperObjects\Cow.cs" />
@@ -68,6 +73,7 @@
     <Compile Include="Installers\WorkerInstaller.cs" />
     <Compile Include="Logging\LoggingAspect.cs" />
     <Compile Include="Workers\DifferenceStringGenerator.cs" />
+    <Compile Include="Formatting\Interfaces\IFormatRulesEngine.cs" />
     <Compile Include="Workers\Interfaces\IDifferenceStringGenerator.cs" />
     <Compile Include="Workers\Interfaces\IPropertyComparer.cs" />
     <Compile Include="Workers\Interfaces\IPropertyGetter.cs" />
