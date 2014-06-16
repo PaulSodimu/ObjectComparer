@@ -24,8 +24,7 @@ namespace ObjectComparer
             List<string> changes = new List<string>();
 
             if (objectA.GetType() != objectB.GetType())
-            {
-                //Spec says only changed props should be in list. Nice message could be added here.
+            { 
                 //changes.Add("The objects supplied are not of the same type.");
                 return changes;
             }
@@ -36,8 +35,7 @@ namespace ObjectComparer
 
             //Loop through all objA properties. 
             foreach (var property in objAProps)
-            {
-                //probably redundant.. 
+            { 
                 if (objBProps.ContainsKey(property.Key))
                 {
                     string result = _propertyComparer.CompareProperties(property, objBProps.FirstOrDefault(p => p.Key == property.Key));
@@ -45,8 +43,7 @@ namespace ObjectComparer
                     if (!string.IsNullOrEmpty(result)) changes.Add(result);
                 }
             }
-
-            //Spec says only changed props should be in list. Nice message could be added here.
+             
             //if (changes.Count == 0) changes.Add("No differences detected.");
 
             return changes;

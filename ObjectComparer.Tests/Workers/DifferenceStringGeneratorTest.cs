@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using NSubstitute.Core;
 using ObjectComparer.Formatting.Interfaces;
 using ObjectComparer.Workers;
 using ObjectComparer.Workers.Interfaces;

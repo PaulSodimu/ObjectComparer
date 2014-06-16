@@ -1,5 +1,4 @@
 ﻿using ObjectComparer.Formatting.Interfaces;
-using ObjectComparer.Workers.Interfaces;
 
 namespace ObjectComparer.Formatting
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Castle.Windsor;
 using ObjectComparer.HelperObjects;
 using ObjectComparer.HelperObjects.Interfaces;
@@ -11,6 +10,7 @@ namespace ObjectComparer
     public class Program
     {
         private static IAuditor _auditor;
+
         public static void InitialiseCastle()
         {
             IWindsorContainer _container = new WindsorContainer();
