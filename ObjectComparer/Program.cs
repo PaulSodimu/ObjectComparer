@@ -11,59 +11,55 @@ namespace ObjectComparer
     {
         private static IAuditor _auditor;
 
+        #region TestObjects
+
+        private static IAnimal _aCow;
+        private static IAnimal _aDog;
+        private static IAnimal _aBlueDog;
+
+        private static Bike _aBike;
+        private static Car _aCar;
+        private static Car _aFiveDoorCar;
+
+
+        #endregion
+
         public static void InitialiseCastle()
         {
             IWindsorContainer _container = new WindsorContainer();
             _container.Install(new AspectInstaller(), new WorkerInstaller());
             _auditor = _container.Kernel.Resolve<IAuditor>();
         }
+        
+        private static void InitialiseObjects()
+        {
+            _aCow = new Cow() { Colour = "Blue", NumberOfUdders = 5 };
+            _aDog = new Dog() { Breed = "PitBull", NumberOfPaws = 4, Colour = "Azure" };
+            _aBlueDog = new Dog() { Breed = "Super", NumberOfPaws = 4, Colour = "Blue" };
+
+            _aBike = new Bike() { Wheels = 4, HasHandleBars = false };
+            _aCar = new Car() { NumberOfDoors = 3, Wheels = 4 };
+            _aFiveDoorCar = new Car() { NumberOfDoors = 5, Wheels = 4 };
+        }
 
         public static void Main(string[] args)
         { 
-            AppDomain currentDomain = AppDomain.CurrentDomain;
             //Catch em all
+            AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += MyHandler; 
 
             InitialiseCastle();
-
-            IAnimal aCow = new Cow(){Colour = "Blue", NumberOfUdders = 5};
-            IAnimal aDog = new Dog(){Breed = "PitBull", NumberOfPaws = 4, Colour = "Azure"};
-
-            IAnimal blueDog = new Dog(){Breed = "Super", NumberOfPaws = 4, Colour = "Blue"};
-
-            Bike aBike = new Bike(){Wheels = 4, HasHandleBars = false};
-            Car  aCar = new Car(){NumberOfDoors = 3, Wheels = 4};
-            Car fiveDoorCar = new Car() { NumberOfDoors = 5, Wheels = 4 };
+            InitialiseObjects();
             
-            Compare(aCow, aDog);
-            Compare(aDog, blueDog);
-            Compare(aBike, aCar);
-            Compare(aCar, fiveDoorCar);
+            Compare(_aCow, _aDog);
+            Compare(_aDog, _aBlueDog);
+            Compare(_aBike, _aCar);
+            Compare(_aCar, _aFiveDoorCar);
+            Compare(_aCar, _aCar);
 
             Console.ReadKey();
-
-
-            #region interactive gui
-
-            //var result = _auditor.GetChanges(aCow, aDog);
-
-            //Console.WriteLine("Choose type of first object:");
-
-            //Console.WriteLine("{1} -> Bike");
-            //Console.WriteLine("{2} -> Car");
-            //Console.WriteLine("{3} -> Cow");
-            //Console.WriteLine("{4} -> Dog");
-
-            //var typeA = Console.ReadLine();
-
-            //if (string.IsNullOrEmpty(typeA))
-            //{
-
-            //}
-            //var objAType = GetObject((int)typeA) 
-
-            #endregion
         }
+
 
         private static void Compare(object objA, object objB)
         {
@@ -104,26 +100,7 @@ namespace ObjectComparer
         {
             Console.WriteLine(objectName + " is " + obj.ToString());
             Console.ReadLine();
-        }
-
-        public static object GetObject(int choice)
-        {
-            switch (choice)
-            {
-                case 1:
-                    return new Bike();
-                case 2:
-                    return new Car();
-                case 3:
-                    IAnimal someCow = new Cow();
-                    return someCow;
-                case 4:
-                    IAnimal someDog = new Dog();
-                    return someDog;
-            }
-
-            return null;
-        }
+        } 
 
         public static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {

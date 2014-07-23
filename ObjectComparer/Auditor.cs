@@ -25,7 +25,7 @@ namespace ObjectComparer
 
             if (objectA.GetType() != objectB.GetType())
             { 
-                //changes.Add("The objects supplied are not of the same type.");
+                changes.Add("The objects supplied are not of the same type.");
                 return changes;
             }
 
@@ -44,7 +44,7 @@ namespace ObjectComparer
                 }
             }
              
-            //if (changes.Count == 0) changes.Add("No differences detected.");
+            if (changes.Count == 0) changes.Add("No differences detected.");
 
             return changes;
         }
