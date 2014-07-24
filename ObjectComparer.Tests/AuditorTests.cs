@@ -45,7 +45,7 @@ namespace ObjectComparer.Tests
         #endregion
 
         [TestMethod]
-        public void GetChanges_TwoDifferentObjects_returnsEmptyList()
+        public void GetChanges_TwoDifferentObjects_returnsDifferentTypeText()
         {
             //Arrange
             TestObject objA = new TestObject();
@@ -55,7 +55,7 @@ namespace ObjectComparer.Tests
             var result = _target.GetChanges(objA, objB);
 
             //Assert
-            Assert.IsTrue(result.Count == 0);
+            Assert.IsTrue(result[0] == "The objects supplied are not of the same type.");
         }
 
         [TestMethod]

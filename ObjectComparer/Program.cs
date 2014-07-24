@@ -49,8 +49,8 @@ namespace ObjectComparer
             currentDomain.UnhandledException += MyHandler; 
 
             InitialiseCastle();
-            InitialiseObjects();
-            
+            InitialiseObjects(); 
+
             Compare(_aCow, _aDog);
             Compare(_aDog, _aBlueDog);
             Compare(_aBike, _aCar);
